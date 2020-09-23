@@ -1,6 +1,6 @@
 package com.timhan.springboot.web;
 
-import com.timhan.springboot.web.dto.HelloResponseDto;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +8,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@Ignore
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class HelloControllerTest {
@@ -41,16 +41,5 @@ public class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is(name)))
                 .andExpect(jsonPath("$.amount", is(amount)));
-    }
-
-    @Test
-    public void lombok_test() {
-        String name = "test";
-        int amount = 1000;
-
-        HelloResponseDto dto = new HelloResponseDto(name, amount);
-
-        assertThat(dto.getName()).isEqualTo(name);
-        assertThat(dto.getAmount()).isEqualTo(amount);
     }
 }

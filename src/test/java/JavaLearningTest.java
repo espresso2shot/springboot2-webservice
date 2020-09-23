@@ -1,11 +1,11 @@
-package com.timhan.springboot.web;
-
-
+import com.timhan.springboot.web.dto.HelloResponseDto;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JavaLearningTest {
 
@@ -34,5 +34,16 @@ public class JavaLearningTest {
         }
 
         return sb.toString();
+    }
+
+    @Test
+    public void lombok_test() {
+        String name = "test";
+        int amount = 1000;
+
+        HelloResponseDto dto = new HelloResponseDto(name, amount);
+
+        assertThat(dto.getName()).isEqualTo(name);
+        assertThat(dto.getAmount()).isEqualTo(amount);
     }
 }
